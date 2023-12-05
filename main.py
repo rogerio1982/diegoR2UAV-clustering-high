@@ -34,7 +34,7 @@ for x in range(sel_n_clusters):
         temp_data = data.iloc[labels == c]
         centroid = list(temp_data.mean())
         centr.append(centroid)
-        uav_high.append(300)
+        uav_high.append(30)#aqui modifica a altura
     centr = pd.DataFrame(centr, columns=['X','Y'])
 
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
