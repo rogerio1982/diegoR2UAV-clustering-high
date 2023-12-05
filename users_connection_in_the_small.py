@@ -1,4 +1,6 @@
 from calculate_channel_ATG import calculate_channel_ATG
+from calculate_channel import calculate_channel
+
 import numpy as np
 from operator import itemgetter
 import copy
@@ -21,7 +23,7 @@ def users_connection_in_the_small(users, smalls):
     # Calcula o SINR, CQI e DR (1 PRB) de cada usuário para cada small
     for i in range(0, number_of_users):
         for j in range(0, number_of_smalls):
-            data_rate[i][j], cqi[i][j], sinr[i][j] = calculate_channel_ATG(users[i], smalls[j], smalls)
+            data_rate[i][j], cqi[i][j], sinr[i][j] = calculate_channel(users[i], smalls[j], smalls)
 
     # Dimensão da matriz para armazenar os usuários e a quantidade de PRBs que eles precisam
     # Linhas = quantidade de usuários

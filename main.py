@@ -18,8 +18,8 @@ data = pd.read_csv("bairros_filtrados.csv")
 
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 12
-x=1
+sel_n_clusters = 3
+
 total=1
 resu=[]
 for x in range(sel_n_clusters):
@@ -34,7 +34,7 @@ for x in range(sel_n_clusters):
         temp_data = data.iloc[labels == c]
         centroid = list(temp_data.mean())
         centr.append(centroid)
-        uav_high.append(10)
+        uav_high.append(300)
     centr = pd.DataFrame(centr, columns=['X','Y'])
 
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
@@ -43,15 +43,15 @@ for x in range(sel_n_clusters):
     results, base_station_users_and_throughputs, total_users_data_rate = root(total_number_of_users, data, number_of_small_base_stations, uav2,uav_high)
     print("teste",x, "resultados",results)
     resu.append(results)
-    total = x + 1
+    total = total + 1
 
 #total_users_data_rate = calculate_results(data,uav2)
 count=0
 for x in resu:
     print(count,x)
    # print ("valores")
-   # print("qtd=",x[0])
-   # print("taxa=", x[2])
+    #print("qtd=",x[0])
+    #print("taxa=", x[2])
    # print("UAVS ON=", x[8])
     count=count+1
 
