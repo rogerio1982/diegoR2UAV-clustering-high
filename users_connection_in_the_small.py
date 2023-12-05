@@ -1,6 +1,6 @@
 from calculate_channel_ATG import calculate_channel_ATG
 from calculate_channel import calculate_channel
-
+#alterado
 import numpy as np
 from operator import itemgetter
 import copy
