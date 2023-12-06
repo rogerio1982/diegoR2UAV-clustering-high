@@ -18,7 +18,7 @@ data = pd.read_csv("bairros_filtrados.csv")
 
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 3
+sel_n_clusters = 12
 
 total=1
 resu=[]
@@ -34,7 +34,7 @@ for x in range(sel_n_clusters):
         temp_data = data.iloc[labels == c]
         centroid = list(temp_data.mean())
         centr.append(centroid)
-        uav_high.append(30)#aqui modifica a altura
+        uav_high.append(60)#aqui modifica a altura
     centr = pd.DataFrame(centr, columns=['X','Y'])
 
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
