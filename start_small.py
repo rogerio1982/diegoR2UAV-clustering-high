@@ -1,5 +1,18 @@
 from base_station import base_station
 
+import math
+
+# Função para calcular o raio do cone
+def calcular_raio(h, theta_graus):
+    # Convertendo o ângulo de graus para radianos
+    theta_radianos = math.radians(theta_graus)
+
+    # Calculando o raio usando a fórmula r = h / tan(theta)
+    raio = h / math.tan(theta_radianos)
+
+    return raio
+
+
 def start_small(number_of_small_base_stations, uav2, uav_high):
     if not isinstance(uav_high, list):
         raise Exception()
@@ -23,8 +36,9 @@ def start_small(number_of_small_base_stations, uav2, uav_high):
         new_small_cell.total_PRB = 50 # Número total de PRBs
         new_small_cell.remaining_PRB = 50 # Número de PRBs disponíveis
         new_small_cell.bandwidth = 10e6 # Largura de banda em Mhz
-        new_small_cell.coverage_area = (uav_high[i])*3#500 # Área de cobertura
+        new_small_cell.coverage_area = calcular_raio(uav_high[i],50)#500 # Área de cobertura
         new_small_cell.height = uav_high[i] # Altura da base station
+        print ("altura",new_small_cell.height,"raio",new_small_cell.coverage_area)
         #new_small_cell.height = uav_high # Altura da base station
 
         small_cells.append(new_small_cell) # Adiciona a small cell base station criada na lista de small cells
@@ -32,4 +46,3 @@ def start_small(number_of_small_base_stations, uav2, uav_high):
         counter = counter + 1 # Incrementa a variável contadora
 
     return small_cells
-

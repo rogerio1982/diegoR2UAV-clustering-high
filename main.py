@@ -34,7 +34,7 @@ for x in range(sel_n_clusters):
         temp_data = data.iloc[labels == c]
         centroid = list(temp_data.mean())
         centr.append(centroid)
-        uav_high.append(60)#aqui modifica a altura
+        uav_high.append(30)#aqui modifica a altura
     centr = pd.DataFrame(centr, columns=['X','Y'])
 
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
@@ -55,7 +55,32 @@ for x in resu:
    # print("UAVS ON=", x[8])
     count=count+1
 
-plt.scatter(data["X1"], data["X2"], marker='o', c='blue', label='usuario')
+#plot
+# Extrair a terceira coluna dos resultados
+terceira_coluna = [x[0] for x in resu]
+
+# Criar uma lista de índices para usar como eixo x
+indices = list(range(len(resu)))
+
+# Criar o gráfico de linhas
+plt.plot(indices, terceira_coluna, marker='o', linestyle='-', color='b', label='Users Connected')
+
+# Adicionar rótulos aos eixos
+plt.xlabel('UAVBS')
+plt.ylabel('Users')
+
+# Adicionar título ao gráfico
+plt.title('UAVBS connected')
+
+# Adicionar uma legenda
+plt.legend()
+
+# Exibir o gráfico
+plt.show()
+
+
+#kmeans
+plt.scatter(data["X"], data["Y"], marker='o', c='blue', label='usuario')
 plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='Sc')
 plt.xlabel('Eixo X')
 plt.ylabel('Eixo Y')
