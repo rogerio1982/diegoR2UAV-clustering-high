@@ -22,6 +22,9 @@ sel_n_clusters = 12
 
 total=1
 resu=[]
+distancias = []
+
+
 for x in range(sel_n_clusters):
     model = KMeans(n_clusters=total, random_state=0, verbose=1)
 
@@ -30,13 +33,27 @@ for x in range(sel_n_clusters):
 
     centr = []
     uav_high = []
+
+    centers = model.cluster_centers_
+
     for c in l_clusters:
         temp_data = data.iloc[labels == c]
         centroid = list(temp_data.mean())
         centr.append(centroid)
-        uav_high.append(30)#aqui modifica a altura
-    centr = pd.DataFrame(centr, columns=['X','Y'])
+        centro = centers[c]
 
+        # calcula o raio de cada cluster
+        dis = 0
+        for index, user in data.iterrows():
+            dist = np.sqrt(np.sum((user - centro) ** 2))
+            if dist >= dis:
+                dis = dist
+    distancias.append(dist)
+    for x in distancias:
+        uav_high.append(int(x*1000))  # aqui modifica a altura
+
+    print("dist", distancias)
+    centr = pd.DataFrame(centr, columns=['X','Y'])
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
     total_number_of_users = len(data);
     number_of_small_base_stations = len(uav2);
@@ -44,6 +61,9 @@ for x in range(sel_n_clusters):
     print("teste",x, "resultados",results)
     resu.append(results)
     total = total + 1
+
+
+
 
 #total_users_data_rate = calculate_results(data,uav2)
 count=0
