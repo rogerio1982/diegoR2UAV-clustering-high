@@ -24,17 +24,16 @@ sel_n_clusters = 12
 total=1
 resu=[]
 distancias = []
-
+random_integer = random.randint(1, 5000)
 
 for x in range(sel_n_clusters):
-    model = KMeans(n_clusters=total, random_state=0, verbose=1)
+    model = KMeans(n_clusters=total, random_state=random_integer, verbose=1)
 
     labels = model.fit_predict(data)
     l_clusters = list(np.unique(labels))
 
     centr = []
     uav_high = []
-
     centers = model.cluster_centers_
 
     for c in l_clusters:
@@ -52,7 +51,14 @@ for x in range(sel_n_clusters):
     distancias.append(dist)
     for raio in distancias:
         #uav_high.append(200)  # aqui modifica a altura h=r⋅tan(θ)
-        uav_high.append(int((raio * math.tan(45))*1000))  # aqui modifica a altura h=r⋅tan(θ)
+        #uav_high.append(int((raio * math.tan(45))*1000))  # aqui modifica a altura h=r⋅tan(θ)
+        print ("raio",raio)
+        if raio > 0.100:
+            raio = 0.100
+        if raio < 0.050:
+            raio = 0.050
+        uav_high.append(float((raio)*1000))  # aqui modifica a altura h=r⋅tan(θ)
+
 
     print("dist", distancias)
     centr = pd.DataFrame(centr, columns=['X','Y'])
@@ -68,6 +74,7 @@ for x in range(sel_n_clusters):
 #total_users_data_rate = calculate_results(data,uav2)
 count=0
 for x in resu:
+    print("estatistica")
     print(count,x)
    # print ("valores")
     #print("qtd=",x[0])
