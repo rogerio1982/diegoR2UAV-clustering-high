@@ -25,7 +25,8 @@ total=1
 resu=[]
 distancias = []
 random_integer = random.randint(1, 5000)
-teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
+#teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
+teste = [50,50,50,50,50,50,50,50,50,50,50,50]
 
 model = KMeans(n_clusters=12, random_state=random_integer, verbose=1)
 
@@ -41,8 +42,8 @@ for c in l_clusters:
     centroid = list(temp_data.mean())
     centr.append(centroid)
     centro = centers[c]
-    uav_high = teste
-    uav_high.append(uav_high)
+    #uav_high = teste
+    #uav_high.append(uav_high)
 
 
 # calcula o raio de cada cluster
@@ -51,10 +52,20 @@ for c in l_clusters:
         dist = np.sqrt(np.sum((user - centro) ** 2))
         if dist >= dis:
             dis = dist
-distancias.append(dist)
-for raio in distancias:
-    #uav_high.append(200)  # aqui modifica a altura h=r⋅tan(θ)
-    uav_high.append(int((raio * math.tan(45))*1000))  # aqui modifica a altura h=r⋅tan(θ)
+
+
+    #distancias.append(int(dis*1000))
+    calcdist = int((dis / math.tan(45))*1000)
+    if calcdist <=100:
+        distancias.append(calcdist)
+    else:
+        distancias.append(100)
+
+
+
+#atribue a distancia encontrada para altura
+uav_high=distancias#int(raio*1000)#teste  # aqui modifica a altura h=r⋅tan(θ)
+   # uav_high.append(int((raio * math.tan(45))*1000))  # aqui modifica a altura h=r⋅tan(θ)
 
    # uav_high=teste # aqui modifica a altura h=r⋅tan(θ)
 # {results[0]: users max; results[2]: average_user_data_rate max; results[3]: user_minimum_data_rate max}

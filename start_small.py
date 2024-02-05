@@ -37,7 +37,7 @@ def start_small(number_of_small_base_stations, uav2, uav_high):
         new_small_cell.remaining_PRB = 50 # Número de PRBs disponíveis
         new_small_cell.bandwidth = 10e6 # Largura de banda em Mhz
 #        new_small_cell.coverage_area = calcular_raio(uav_high[i],50)#500 # Área de cobertur r = h / math.tan(theta_radianos)
-        new_small_cell.coverage_area = uav_high[i]*3#500 # Área de cobertur r = h / math.tan(theta_radianos)
+        new_small_cell.coverage_area = uav_high[i]*math.tan(45)#500 # Área de cobertur r = h / math.tan(theta_radianos)
         #new_small_cell.coverage_area = 500 # Área de cobertur r = h / math.tan(theta_radianos)
 
         new_small_cell.height = uav_high[i] # Altura da base station
