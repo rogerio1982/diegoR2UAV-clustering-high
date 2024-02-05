@@ -46,6 +46,7 @@ def calculate_channel(user, base_station, base_stations):
         C = base_station.bandwidth / base_station.total_PRB
         data_rate = (C * np.log2(1 + sinr))
         cqi = round(1 + ((7/13)*(sinr+6)))
+        print("dr",data_rate)
 
 
     else:

@@ -54,9 +54,9 @@ def calculate_results(users, smalls):
         user_maximum_data_rate_in_smalls = 0
         user_minimum_data_rate_in_smalls = 0    
 
-    results[2] = np.round(average_user_data_rate)
+    results[2] = (np.round(average_user_data_rate))/1000000
     results[3] = np.round(user_minimum_data_rate)
-    results[4] = np.round(user_maximum_data_rate)
+    results[4] = (np.round(user_maximum_data_rate))/1000000
 
     results[5] = np.round(average_user_data_rate_in_smalls)
     results[6] = np.round(user_minimum_data_rate_in_smalls)

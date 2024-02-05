@@ -8,12 +8,7 @@ from root import root
 #from clustering_algoritms import clustering_algoritm
 import random
 
-
-
 random.seed(0)
-
-
-
 
 data = pd.read_csv("data_X.csv")
 

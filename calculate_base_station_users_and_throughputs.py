@@ -21,7 +21,6 @@ def calculate_base_station_users_and_throughputs(smalls, users):
             user_data_rate = users[user_id].data_rate # taxa de dados do usuário
             base_station_throughput = base_station_throughput + user_data_rate # Soma a taxa de dados do usuário conectado ao throughput da base station
 
-
         base_station_users_and_throughputs[i][0] = smalls[i].id
         base_station_users_and_throughputs[i][1] = base_station_total_users
         base_station_users_and_throughputs[i][2] = base_station_throughput
