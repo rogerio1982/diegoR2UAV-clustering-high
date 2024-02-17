@@ -1,14 +1,23 @@
-import pandas as pd
+import random
 
-# Carregar o arquivo CSV
-caminho_arquivo_entrada = 'arquivo_saida.csv'  # Substitua pelo caminho real do seu arquivo CSV
-caminho_arquivo_saida = 'novo_arquivo.csv'  # Substitua pelo caminho desejado para o novo arquivo CSV
+# Vetor original
+vetor_original = [1, 2, 3, 4, 5]
 
-# Carregar o CSV para um DataFrame
-dados = pd.read_csv(caminho_arquivo_entrada)
+# Contador de repetições
+repeticoes = 0
 
-# Excluir as duas primeiras colunas
-dados_sem_primeiras_colunas = dados.iloc[:, 2:]
+# Loop while para realizar cinco repetições
+while repeticoes < 5:
+    # Vetor que será preenchido com valores aleatórios
+    vetor_preenchido = []
 
-# Salvar o DataFrame resultante em um novo arquivo CSV
-dados_sem_primeiras_colunas.to_csv(caminho_arquivo_saida, index=False)
+    # Incrementa o contador de repetições
+    repeticoes += 1
+
+    # Preencher o vetor_preenchido com valores aleatórios
+    for _ in vetor_original:
+        valor_aleatorio = random.randint(0, 100)  # Gera um valor aleatório entre 0 e 100
+        vetor_preenchido.append(valor_aleatorio)
+
+    # Imprimir o vetor preenchido para esta iteração
+    print(f"Iteração {repeticoes}: {vetor_preenchido}")
