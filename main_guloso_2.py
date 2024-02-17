@@ -1,3 +1,5 @@
+
+
 import os #teatee
 import pandas as pd
 import numpy as np
@@ -27,16 +29,16 @@ sel_n_clusters = 6
 total=1
 resu=[]
 distancias = []
-
+fitness=0
 #teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
 #teste = [50,50,50,50,50,50,50,50,50,50,50,50]
-max=sel_n_clusters+1
+max=20#sel_n_clusters+1
 resufinal=[]
 tempogravado=[]
 for x in range(1,max):
     random_integer = random.randint(1, 5000)
 
-    model = KMeans(n_clusters=x, random_state=random_integer, verbose=1)
+    model = KMeans(n_clusters=sel_n_clusters, random_state=random_integer, verbose=1)
 
     labels = model.fit_predict(data)
     l_clusters = list(np.unique(labels))
@@ -62,7 +64,7 @@ for x in range(1,max):
                 dis = dist
 
         #distancias.append(int(dis*1000))
-        calcdist = int((dis / math.tan(45))*1000)
+        calcdist = int((dis / math.tan(45))*1000) #converte raio em altura do uabs
         if calcdist <=100:
             distancias.append(calcdist)
         else:
@@ -87,7 +89,7 @@ for x in range(1,max):
     results, base_station_users_and_throughputs, total_users_data_rate = root(total_number_of_users, data, number_of_small_base_stations, uav2,uav_high)
     print("teste", "resultados",results)
     resu.append(results)
-    resufinal.append(resu)
+    #resufinal.append(resu)
     total = total + 1
 
     # Grava o tempo de término
@@ -105,14 +107,22 @@ for x in range(1,max):
         print("estatistica")
         #print(count,x[0],x[2],x[3])
         print(count,x[2],"Mbps")
-        # print ("valores")
-        #print("qtd=",x[0])
-        #print("taxa=", x[2])
-        # print("UAVS ON=", x[8])
         count=count+1
+
+        if x[2] > fitness:
+            fitness = x[2]
+
+resufinal.append(resu)
 
 print("Final")
 print(resufinal)
+print("melhores fitness: ",fitness)
+coluna = [x[2] for x in resu]
+print("fitness ordenados")
+for x in coluna:
+    print(x)
+
+
 # Itera sobre as sublistas na lista aninhada
 for sublista in resufinal:
     # Itera sobre os elementos em cada sublista e os imprime
