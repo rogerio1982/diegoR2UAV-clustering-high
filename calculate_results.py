@@ -12,7 +12,7 @@ def calculate_results(users, smalls):
         1 = Usuários conectados
         2 = Usuários não conectados
         3 = Média taxa de dados dos usuários (Geral)
-        4 = Taxa de dados mínima obtidada pelos usuários (Geral)
+        4 = Taxa de dados mínima obtidada pelos usuários (Geral) QoS
         5 = Taxa de dados máxima obtidada pelos usuários (Geral)
         6 = Média taxa de dados dos usuários (somente nas small base stations)
         7 = Taxa de dados mínima obtidada pelos usuários (somente nas small base stations)

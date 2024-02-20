@@ -32,7 +32,7 @@ distancias = []
 fitness=0
 #teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
 #teste = [50,50,50,50,50,50,50,50,50,50,50,50]
-max=100#sel_n_clusters+1
+max=10#sel_n_clusters+1
 resufinal=[]
 tempogravado=[]
 
@@ -68,7 +68,7 @@ for c in l_clusters:
         distancias.append(calcdist)
     else:
         distancias.append(100)
-
+distancias=[10,10,10,10,10,10]
 melhores_alturas=[]
 for x in range(1,max):
 
@@ -108,7 +108,8 @@ for x in range(1,max):
     #count=0
     for x in resu:
 
-        print(x[2])
+        #print(x[2]) #média vazao
+        print(x[3])  # vazao minima QoS
 
         #buscando o melhor troughput da rede levando em consideracao que ja atendeu tdos
         #para isso o algoritmo modifica as posicoes dos drones a cada iteracao
@@ -194,8 +195,8 @@ plt.show()
 
 #kmeans 03
 plt.figure()
-plt.scatter(data["X"], data["Y"], marker='o', c='blue', label='usuario')
-plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='Sc')
+plt.scatter(data["X"], data["Y"], marker='o', c='blue', label='User')
+plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='UAVBS')
 plt.xlabel('Eixo X')
 plt.ylabel('Eixo Y')
 plt.legend()
@@ -207,27 +208,27 @@ plt.show()
 plt.figure()
 for i in range(len(centr)):
     cluster_data = data[labels == i]
-    plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o', label=f'Cluster {i}')
-plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='Centroides')
-plt.xlabel('Eixo X')
-plt.ylabel('Eixo Y')
+    plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o', label=f'Cluster users {i}')
+plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='UAVBS')
+plt.xlabel('X')
+plt.ylabel('Y')
 plt.legend()
-plt.title("Kmeans Clustering - Pontos Coloridos por Cluster")
+plt.title("Kmeans Clustering ")
 plt.show()
 
 #######################################################################################
 
 
-'''
+
 # Create a 3D scatter plot
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-ax.scatter(data["X"], data["Y"], 0, marker='o', c='blue', label='usuario')
-ax.scatter(centr["X"], centr["Y"], uav_high, marker='x', c='red', label='Sc')
-ax.set_xlabel('Eixo X')
-ax.set_ylabel('Eixo Y')
-ax.set_zlabel('Eixo Z')
+ax.scatter(data["X"], data["Y"], 0, marker='o', c='blue', label='User')
+ax.scatter(centr["X"], centr["Y"], uav_high, marker='x', c='red', label='UAVBS')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
 ax.legend()
-plt.title("Kmeans Clustering - 3D Visualization")
+plt.title("3D position UAVBS")
 plt.show()
-'''
+

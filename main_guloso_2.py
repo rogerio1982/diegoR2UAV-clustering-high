@@ -24,7 +24,7 @@ start_time = time.time()
 data = pd.read_csv("bairros_filtrados.csv")
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 6
+sel_n_clusters = 4
 
 total=1
 resu=[]

@@ -22,7 +22,7 @@ start_time = time.time()
 data = pd.read_csv("bairros_filtrados.csv")
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 6
+sel_n_clusters = 12
 
 total=1
 resu=[]
@@ -62,7 +62,7 @@ for x in range(1,max):
                 dis = dist
 
         #distancias.append(int(dis*1000))
-        calcdist = int((dis / math.tan(45))*1000)
+        calcdist = int((dis / math.tan(45))*1000)#int((dis / math.tan(45))*1000)
         if calcdist <=100:
             distancias.append(calcdist)
         else:
