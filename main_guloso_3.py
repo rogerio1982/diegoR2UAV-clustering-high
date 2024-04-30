@@ -32,7 +32,7 @@ distancias = []
 fitness=0
 #teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
 #teste = [50,50,50,50,50,50,50,50,50,50,50,50]
-max=10#sel_n_clusters+1
+max=100#sel_n_clusters+1
 resufinal=[]
 tempogravado=[]
 
@@ -68,7 +68,7 @@ for c in l_clusters:
         distancias.append(calcdist)
     else:
         distancias.append(100)
-distancias=[10,10,10,10,10,10]
+#distancias=[10,10,10,10,10,10]
 melhores_alturas=[]
 for x in range(1,max):
 
@@ -168,7 +168,7 @@ plt.xlabel('Number of Solutions Found')
 plt.ylabel('Time (s)')
 plt.title('Solutions Found')
 plt.grid(True)
-plt.show()
+#plt.show()
 
 
 #plot 01
@@ -180,7 +180,7 @@ plt.xlabel('UAVBS')
 plt.ylabel('Users')
 plt.legend()
 plt.title('UAVBS connected')
-plt.show()
+#plt.show()
 
 #plot 02
 plt.figure()
@@ -191,7 +191,7 @@ plt.xlabel('UAVBS')
 plt.ylabel('Throughput')
 plt.legend()
 plt.title('Average Throughput')
-plt.show()
+#plt.show()
 
 #kmeans 03
 plt.figure()
@@ -201,7 +201,7 @@ plt.xlabel('Eixo X')
 plt.ylabel('Eixo Y')
 plt.legend()
 plt.title("Kmeans Clustering")
-plt.show()
+#plt.show()
 
 
 # kmeans color 04
@@ -214,7 +214,7 @@ plt.xlabel('X')
 plt.ylabel('Y')
 plt.legend()
 plt.title("Kmeans Clustering ")
-plt.show()
+#plt.show()
 
 #######################################################################################
 
