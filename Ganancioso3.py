@@ -24,14 +24,17 @@ start_time = time.time()
 data = pd.read_csv("bairros_filtrados.csv")
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 6
+sel_n_clusters = 18
 
 total=1
 resu=[]
 distancias = []
 fitness=0
 #teste = [100,64.7,99.9,55.7,50,58.8,100,50.4,84.5,51.1,93.3,50]
-#teste = [50,50,50,50,50,50,50,50,50,50,50,50]
+#teste = [30,30,30,30,30,30,30,30,30,30,30,30,30,30]
+#teste = [50,50,50,50,50,50,50,50,50,50,50,50,50,50]
+#teste = [100,100,100,100,100,100,100,100,100,100,100,100,100,100]
+
 max=100#sel_n_clusters+1
 resufinal=[]
 tempogravado=[]
@@ -68,22 +71,24 @@ for c in l_clusters:
         distancias.append(calcdist)
     else:
         distancias.append(100)
-#distancias=[10,10,10,10,10,10]
+#distancias=[1000,1000]
 melhores_alturas=[]
 for x in range(1,max):
 
 #altrar as alturas para encontrar otimos locais
 
-
     #atribue a distancia encontrada para altura
-    uav_high=distancias#int(raio*1000)#teste  # aqui modifica a altura h=r⋅tan(θ)#altura
+   # uav_high=distancias#int(raio*1000)#teste  # aqui modifica a altura h=r⋅tan(θ)#altura
     # uav_high.append(int((raio * math.tan(45))*1000))  # aqui modifica a altura h=r⋅tan(θ)
+    uav_high = distancias  # int(raio*1000)#teste  # aqui modifica a altura h=r⋅tan(θ)#altura
 
-    # uav_high=teste # aqui modifica a altura h=r⋅tan(θ)
+# uav_high=teste # aqui modifica a altura h=r⋅tan(θ)
     # {results[0]: users max; results[2]: average_user_data_rate max; results[3]: user_minimum_data_rate max}
 
 
     #uav_high=30
+    #print("dist", distancias) #ajuste das alturas fixas, encontradas pelo algoritmo
+
     print("dist", distancias)
     centr = pd.DataFrame(centr, columns=['X','Y'])
     uav2 = pd.DataFrame(centr, columns=['X','Y']);
