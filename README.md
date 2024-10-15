@@ -1,6 +1,6 @@
 # UAV-BS in desasters  
 
-![esquema_v9]((https://www.mdpi.com/electronics/electronics-12-04478/article_deploy/html/images/electronics-12-04478-g001-550.jpg))
+![esquema_v9](https://www.mdpi.com/electronics/electronics-12-04478/article_deploy/html/images/electronics-12-04478-g001-550.jpg)
 
 
 ## 1. General description
