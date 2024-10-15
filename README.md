@@ -14,3 +14,7 @@ In this study, we proposed a 3D positioning strategy for UAV-BSs that serves the
 showed that the proposed heuristic could find the best position and altitude for the UAV-BSs, provide network access for mobile user/IoTs (Internet of things) 
 sensors, maximize the number of devices connected to the UAV-BSs, and guarantee a minimum throughput for users. The proposed heuristic not only performs well
 in terms of coverage and performance, but is also more energy-efficient than other algorithms found in the literature.
+
+## 2. Install
+pip install -r requirements.txt
+
