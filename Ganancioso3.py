@@ -21,10 +21,10 @@ import time
 # Grava o tempo de início
 start_time = time.time()
 
-data = pd.read_csv("bairros_filtrados.csv")
+data = pd.read_csv("arquivo_saida_india_sem_latlon.csv")
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 18
+sel_n_clusters = 5
 
 total=1
 resu=[]
@@ -224,7 +224,7 @@ plt.title("Kmeans Clustering ")
 #######################################################################################
 
 
-
+'''
 # Create a 3D scatter plot
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -236,4 +236,28 @@ ax.set_zlabel('Z')
 ax.legend()
 plt.title("3D position UAVBS")
 plt.show()
+'''
 
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Criação do gráfico 3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Plot para cada cluster com uma cor distinta, similar ao gráfico 2D
+for i in range(len(centr)):
+    cluster_data = data[labels == i]  # Filtra os dados do cluster atual
+    ax.scatter(cluster_data["X"], cluster_data["Y"], 0, marker='o', label=f'Cluster users {i}')
+
+# Plotando os UAV-BS em vermelho e na posição `uav_high`
+ax.scatter(centr["X"], centr["Y"], uav_high, marker='x', c='red', label='UAVBS')
+
+# Configurações do gráfico 3D
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.legend()
+plt.title("3D position UAVBS with Cluster Colors")
+plt.show()
