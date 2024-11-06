@@ -21,10 +21,10 @@ import time
 # Grava o tempo de início
 start_time = time.time()
 
-data = pd.read_csv("arquivo_saida_india_sem_latlon.csv")
+data = pd.read_csv("india200.csv")
 
 #buscando a melhor solucao de forma incremental.
-sel_n_clusters = 5
+sel_n_clusters = 6
 
 total=1
 resu=[]
@@ -35,7 +35,7 @@ fitness=0
 #teste = [50,50,50,50,50,50,50,50,50,50,50,50,50,50]
 #teste = [100,100,100,100,100,100,100,100,100,100,100,100,100,100]
 
-max=100#sel_n_clusters+1
+max=200#sel_n_clusters+1
 resufinal=[]
 tempogravado=[]
 
@@ -213,7 +213,11 @@ plt.title("Kmeans Clustering")
 plt.figure()
 for i in range(len(centr)):
     cluster_data = data[labels == i]
-    plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o', label=f'Cluster users {i}')
+    if i == 0:  # Defina o rótulo apenas na primeira iteração
+        plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o', label='Cluster users')
+    else:
+        plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o')
+    #plt.scatter(cluster_data["X"], cluster_data["Y"], marker='o', label='Cluster users')
 plt.scatter(centr["X"], centr["Y"], marker='x', c='red', label='UAVBS')
 plt.xlabel('X')
 plt.ylabel('Y')
@@ -249,7 +253,11 @@ ax = fig.add_subplot(111, projection='3d')
 # Plot para cada cluster com uma cor distinta, similar ao gráfico 2D
 for i in range(len(centr)):
     cluster_data = data[labels == i]  # Filtra os dados do cluster atual
-    ax.scatter(cluster_data["X"], cluster_data["Y"], 0, marker='o', label=f'Cluster users {i}')
+    if i==0:
+        ax.scatter(cluster_data["X"], cluster_data["Y"], 0, marker='o', label='Cluster users')
+    else:
+        ax.scatter(cluster_data["X"], cluster_data["Y"], 0, marker='o')
+
 
 # Plotando os UAV-BS em vermelho e na posição `uav_high`
 ax.scatter(centr["X"], centr["Y"], uav_high, marker='x', c='red', label='UAVBS')
